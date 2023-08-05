@@ -3,7 +3,7 @@ This project is a simple Pong clone to practice game programming patterns and bu
 
 Here I implemented some patterns like the update method, game loop, double buffer rendering, command, and input handler.
 
-In class Game, all objects are initialized.
+All objects are initialized in Game class. So if you want to follow the code, start there.
 
 You can build using Gradle Task build. Running command `./grandlew build` in the project's root folder.
 
