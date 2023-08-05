@@ -33,11 +33,16 @@ public class Game {
 
         RenderConfig renderConfig = new RenderConfig("Rogue Pong", Configuration.getStaticWidth(), Configuration.getStaticHeight());
 
+        GameInputHandler gameInputHandler = new GameInputHandler();
+
         DoubleBufferRender bufferRender = new DoubleBufferRender(renderConfig)
-                .addKeyListeners(inputHandlerPlayerOne, inputHandlerPlayerTwo)
+                .addKeyListeners(inputHandlerPlayerOne, inputHandlerPlayerTwo, gameInputHandler)
                 .setObservers(observersRender);
 
-        GameLoop gameLoop = new GameLoop(bufferRender, Configuration.getFPS(), observersGameLoop);
+        GameLoop gameLoop = GameLoop.getInstance()
+                .setBufferRender(bufferRender)
+                .setFramesPerSeconds(Configuration.getFPS())
+                .setObservers(observersGameLoop);
 
         gameLoop.start();
     }

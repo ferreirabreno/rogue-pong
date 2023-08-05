@@ -1,7 +1,7 @@
 package dev.breno.player;
 
-import dev.breno.engine.Command;
 import dev.breno.engine.KeyEventEnum;
+import dev.breno.engine.command.Command;
 import dev.breno.player.command.PlayerDoNothingCommand;
 import dev.breno.player.command.PlayerDownCommand;
 import dev.breno.player.command.PlayerUpCommand;
@@ -13,7 +13,6 @@ public class PlayerInputHandler implements KeyListener {
 
     private KeyEventEnum up;
     private KeyEventEnum down;
-    private KeyEventEnum pause;
     private Command upCommand = new PlayerUpCommand();
     private Command downCommand = new PlayerDownCommand();
     private Command doNothingCommand = new PlayerDoNothingCommand();

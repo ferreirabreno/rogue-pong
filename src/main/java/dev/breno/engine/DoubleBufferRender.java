@@ -47,6 +47,7 @@ public class DoubleBufferRender extends Canvas implements BufferRender {
         if (image == null || image.getWidth() != getWidth() || image.getHeight() != getHeight()) {
             image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         }
+
         // draw the observers onto the image
         Graphics graphics = image.getGraphics();
         graphics.setColor(Color.BLACK);
@@ -60,21 +61,23 @@ public class DoubleBufferRender extends Canvas implements BufferRender {
         bs.show();
     }
 
-    @Override
     public void pause() {
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
             createBufferStrategy(3);
             return;
         }
+
         Graphics g = bs.getDrawGraphics();
         if (observers == null) {
             return;
         }
+
         // create a new image if it doesn't exist or if the size has changed
         if (image == null || image.getWidth() != getWidth() || image.getHeight() != getHeight()) {
             image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         }
+
         // draw the observers onto the image
         Graphics graphics = image.getGraphics();
         graphics.setColor(Color.BLACK);
@@ -82,7 +85,16 @@ public class DoubleBufferRender extends Canvas implements BufferRender {
 
         graphics.setColor(Color.WHITE);
         graphics.setFont(new Font("Arial", PLAIN, 32));
-        graphics.drawString("PAUSED", getWidth() / 2, getHeight() / 2);
+        graphics.drawString("PAUSED", (getWidth() / 2) - 48, getHeight() / 2 - 16);
+
+        graphics.setFont(new Font("Arial", PLAIN, 16));
+        graphics.drawString("press SPACE to unpause", (getWidth() / 2) - 80, (getHeight() / 2) + 48);
+        graphics.dispose();
+
+
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        g.dispose();
+        bs.show();
     }
 
     public DoubleBufferRender setObservers(List<Element> newObservers) {

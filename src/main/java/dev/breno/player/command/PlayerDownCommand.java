@@ -1,8 +1,8 @@
 package dev.breno.player.command;
 
 import dev.breno.Configuration;
-import dev.breno.engine.Command;
 import dev.breno.engine.Element;
+import dev.breno.engine.command.Command;
 
 public class PlayerDownCommand implements Command {
     @Override

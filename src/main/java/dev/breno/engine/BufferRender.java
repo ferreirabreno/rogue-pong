@@ -1,8 +1,6 @@
 package dev.breno.engine;
 
-public interface BufferRender {
+interface BufferRender {
     void render(double delay);
-
     void pause();
-
 }

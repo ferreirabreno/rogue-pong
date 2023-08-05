@@ -25,11 +25,11 @@ public class Player extends Element {
     }
 
     public boolean isTopCollision(Element element) {
-        return this.isColliding(element) && element.center() <= this.height / 4 + this.y;
+        return this.isColliding(element) && element.center() <= this.height / 3 + this.y;
     }
 
     public boolean isBottomCollision(Element element) {
-        return this.isColliding(element) && element.center() >= 3 * (this.height / 4) + this.y;
+        return this.isColliding(element) && element.center() >= 2 * (this.height / 3) + this.y;
     }
 
 }
